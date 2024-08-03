@@ -1,88 +1,88 @@
 #==========================================================================
-# Description: Compile the kernel
-# Copyright (C) 2021 https://github.com/unifreq/openwrt_packit
-# Copyright (C) 2021 https://github.com/ophub/amlogic-s9xxx-armbian
+#描述：编译内核
+#Copyright(C)2021 https://github.com/unifreq/openwrt_packit
+#Copyright(C)2021 https://github.com/ophub/amlogic-s9xxx-armbian
 #==========================================================================
 
-name: Compile the kernel
+姓名:编译内核
 
-on:
-  repository_dispatch:
-  workflow_dispatch:
-    inputs:
-      kernel_source:
-        description: "Select the kernel source"
-        required: false
-        default: "unifreq"
-        type: choice
-        options:
-          - unifreq
-          - codesnas
-      kernel_version:
-        description: "Select kernel version"
-        required: false
-        default: "6.6.y"
-        type: choice
-        options:
-          - 5.4.y
-          - 5.10.y
-          - 5.15.y
-          - 6.1.y
-          - 6.6.y
-          - 6.1.y_6.6.y
-          - 5.15.y_5.10.y
-      kernel_auto:
-        description: "Auto use the latest kernel"
-        required: false
-        default: true
-        type: boolean
-      kernel_package:
-        description: "Select compile package list"
-        required: false
-        default: "all"
-        type: choice
-        options:
-          - all
-          - dtbs
-      kernel_toolchain:
-        description: "Select the compilation toolchain"
-        required: false
-        default: "gcc"
-        type: choice
-        options:
-          - clang
-          - gcc
-          - gcc-11.3
-          - gcc-12.2
-          - gcc-12.3
-          - gcc-13.2
-          - gcc-13.3
-      compress_format:
-        description: "Set the initrd compression format"
-        required: false
-        default: "xz"
-        type: choice
-        options:
-          - xz
-          - gzip
-          - zstd
-          - lzma
-      kernel_sign:
-        description: "Set the kernel custom signature"
-        required: false
-        default: "-ophub"
-        type: choice
-        options:
-          - -ophub
-          - -yourname
+在……之上:
+repository_dispatch:
+workflow_dispatch:
+输入:
+kernel_source:
+描述:"选择内核源"
+必需的:假的
+默认:"unifreq"
+类型:选择
+选项:
+-unifreq
+-codesnas
+kernel_version:
+描述:"选择内核版本"
+必需的:假的
+默认:"6.6.y"
+类型:选择
+选项:
+-5.4.y
+-5.10.y
+-5.15.y
+-6.1.y
+-6.6.y
+-6.1.y_6.6.y
+-5.15.y_5.10.y
+kernel_auto:
+描述:"自动使用最新内核"
+必需的:假的
+默认:正确
+类型:布尔型
+kernel_package:
+描述:"选择编译软件包列表"
+必需的:假的
+默认:"全部"
+类型:选择
+选项:
+-所有
+-DTBS
+kernel_toolchain:
+描述:"选择编译工具链"
+必需的:假的
+默认:"gcc"
+类型:选择
+选项:
+-叮当声
+-GCC
+-gcc-11.3
+-gcc-12.2
+-gcc-12.3
+-gcc-13.2
+-gcc-13.3
+compress_format:
+描述:"设置initrd压缩格式"
+必需的:假的
+默认:"xz"
+类型:选择
+选项:
+-XZ
+-gzip
+-zstd
+-LZMA
+kernel_sign:
+描述:"设置内核自定义签名"
+必需的:假的
+默认:"-EShrinftArmKernelDevloper预览"
+类型:选择
+选项:
+--ophub
+--你的名字
 
 env:
-  TZ: America/New_York
+TZ:美洲/纽约
 
-jobs:
-  build:
-    runs-on: ubuntu-22.04
-    if: ${{ github.event.repository.owner.id }} == ${{ github.event.sender.id }}
+工作:
+建立:
+run-on:ubuntu-22.04
+如果:${{github.event.repository.owner.id}}== ${{github.event.sender.id}}
 
     steps:
       - name: Checkout
